@@ -2,9 +2,7 @@ var home={};
 require('dimmer');
 $( document ).ready(function() {
 		console.log('document ready');
-    	$('.special.cards .image').dimmer({
-		  on: 'hover'
-		});
+    	
 	});
 //ctrl
 home.controller=function(){
@@ -91,33 +89,97 @@ home.load=function(ctrl){
 				<div class="ui horizontal divider">
 					Products
 				</div>
-				<div class="ui special cards">
-					<div class="ui three stackable cards">
-					  <div class="card">
-					    <div class="blurring dimmable image">
-					      <div class="ui inverted dimmer">
-					        <div class="content">
-					          <div class="center">
-					            <div class="ui primary button">Add Friend</div>
-					          </div>
-					        </div>
-					      </div>
-					      <img src="http://www.gettyimages.pt/gi-resources/images/Homepage/Hero/PT/PT_hero_42_153645159.jpg"/>
-					    </div>
-					    <div class="content">
-					      <a class="header">Team Hess</a>
-					      <div class="meta">
-					        <span class="date">Create in Aug 2014</span>
-					      </div>
-					    </div>
-					    <div class="extra content">
-					      <a>
-					        <i class="users icon"></i>
-					        2 Members
-					      </a>
-					    </div>
-					  </div>
-					</div>
+				<div class="ui three stackable cards">
+				  <a class="red card">
+				    <div class="ui medium image">
+				      <img src="./images/fruits.jpg"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Fruits</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Fresh Fruits</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
+				  <a class="red card">
+				    <div class="ui medium image">
+				      <img src="./images/vegetables.jpg"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Vegetables</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Fresh Vegetables</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
+				  <a class="red card">
+				    <div class="image">
+				      <img src="./images/groceries.png"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Grocery</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Quality Products</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
+				  <a class="red card">
+				    <div class="image">
+				      <img src="./images/personalcare.jpg"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Personal Care</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Personal Care</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
+				  <a class="red card">
+				    <div class="image">
+				      <img src="./images/dairyproducts.jpg"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Dairy Products</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Dairy Products</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
+				  <a class="red card">
+				    <div class="image">
+				      <img src="./images/beverages.png"/>
+				    </div>
+				    <div class="content">
+				    	<div class="center" style="text-align:center">
+					    	<a class="header" style="color:red"><b>Beverages</b></a>
+					    	<div class="meta">
+					    		<span class="sub-heading">Beverages</span>
+					    		<br/>
+					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
+					    	</div>
+				    	</div>
+				    </div>
+				  </a>
 				</div>
 			</div>
 		</div>
