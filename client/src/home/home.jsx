@@ -90,8 +90,8 @@ home.load=function(ctrl){
 					Products
 				</div>
 				<div class="ui three stackable cards">
-				  <a class="red card">
-				    <div class="ui medium image">
+				  <div class="card">
+				    <div class="image" >
 				      <img src="./images/fruits.jpg"/>
 				    </div>
 				    <div class="content">
@@ -104,9 +104,9 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
-				  <a class="red card">
-				    <div class="ui medium image">
+				  </div>
+				  <div class="card">
+				    <div class="image" style="background-color: white;">
 				      <img src="./images/vegetables.jpg"/>
 				    </div>
 				    <div class="content">
@@ -119,10 +119,10 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
-				  <a class="red card">
-				    <div class="image">
-				      <img src="./images/groceries.png"/>
+				  </div>
+				  <div class="card">
+				    <div class="image" style="background-color: white;">
+				      <img src="./images/grocery.jpeg"/>
 				    </div>
 				    <div class="content">
 				    	<div class="center" style="text-align:center">
@@ -134,10 +134,10 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
-				  <a class="red card">
-				    <div class="image">
-				      <img src="./images/personalcare.jpg"/>
+				  </div>
+				  <div class="card">
+				    <div class="image" style="background-color: white;">
+				      <img src="./images/personalcare3.jpg"/>
 				    </div>
 				    <div class="content">
 				    	<div class="center" style="text-align:center">
@@ -149,8 +149,8 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
-				  <a class="red card">
+				  </div>
+				  <div class="card">
 				    <div class="image">
 				      <img src="./images/dairyproducts.jpg"/>
 				    </div>
@@ -164,8 +164,8 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
-				  <a class="red card">
+				  </div>
+				  <div class="card">
 				    <div class="image">
 				      <img src="./images/beverages.png"/>
 				    </div>
@@ -179,7 +179,7 @@ home.load=function(ctrl){
 					    	</div>
 				    	</div>
 				    </div>
-				  </a>
+				  </div>
 				</div>
 			</div>
 		</div>
