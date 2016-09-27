@@ -12,8 +12,15 @@ home.controller=function(){
 
 home.load=function(ctrl){
 	return (
-		<div class="ui grid">
-			<div class="sixteen wide column">
+		<div class="ui centered grid">
+			<div class="computer only row">
+			  <div class="five wide column">
+			  	FoodWorld
+			  </div>
+			  <div class="six wide column"></div>
+			  <div class="five wide column">testing</div>
+			</div>
+			<div class="computer only row">
 				<div class="ui teal seven item inverted borderless menu">
 				  <a class="item">
 				    Vegetables
@@ -80,104 +87,94 @@ home.load=function(ctrl){
 				  </div>
 				</div>
 			</div>
-			<div class="six wide column">
+			<div class="fifteen wide mobile five wide computer six wide tablet column">
 				<div class="ui horizontal divider">
 					Category
 				</div>
+				<div class="ui centered raised card">
+					<div class="content">
+						<a class="event" style="color:black;">
+							VEGETABLES
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							FRUITS
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							GROCERY
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							PACKAGED FOODS
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							PERSONAL CARE
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							DAIRY PRODUCTS
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+						<div class="ui clearing divider"></div>
+						<a class="event" style="color:black;">
+							BEVERAGES
+							<i style="float:right;" class="shop icon"></i>
+						</a>
+					</div>
+				</div>
 			</div>
-			<div class="ten wide column">
+			<div class="eight wide tablet fifteen wide mobile ten wide computer column">
 				<div class="ui horizontal divider">
 					Products
 				</div>
-				<div class="ui three stackable cards">
-				  <div class="card">
-				    <div class="image" >
-				      <img src="./images/fruits.jpg"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Fruits</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Fresh Fruits</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
+				<div class="ui centered three stackable cards">
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/fruits.jpg"/>
+				    <div class="content" style="text-align:center">
+					    <a class="header" style="color:red"><b>Fruits</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+					</div>
+				  </div>
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/vegetables.jpg"/>
+				    <div class="content" style="text-align:center">
+					    <a class="header" style="color:red"><b>Vegetables</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 				    </div>
 				  </div>
-				  <div class="card">
-				    <div class="image" style="background-color: white;">
-				      <img src="./images/vegetables.jpg"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Vegetables</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Fresh Vegetables</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/grocery.jpeg"/>
+				    <div class="content" style="text-align:center">
+					    <a class="header" style="color:red"><b>Grocery</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 				    </div>
 				  </div>
-				  <div class="card">
-				    <div class="image" style="background-color: white;">
-				      <img src="./images/grocery.jpeg"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Grocery</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Quality Products</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/personalcare3.jpg"/>
+				    <div class="content" style="text-align:center">
+					    <a class="header" style="color:red"><b>Personal Care</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 				    </div>
 				  </div>
-				  <div class="card">
-				    <div class="image" style="background-color: white;">
-				      <img src="./images/personalcare3.jpg"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Personal Care</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Personal Care</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/dairyproducts.jpg"/>
+				    <div class="content"style="text-align:center">
+					    <a class="header" style="color:red"><b>Dairy Products</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 				    </div>
 				  </div>
-				  <div class="card">
-				    <div class="image">
-				      <img src="./images/dairyproducts.jpg"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Dairy Products</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Dairy Products</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
-				    </div>
-				  </div>
-				  <div class="card">
-				    <div class="image">
-				      <img src="./images/beverages.png"/>
-				    </div>
-				    <div class="content">
-				    	<div class="center" style="text-align:center">
-					    	<a class="header" style="color:red"><b>Beverages</b></a>
-					    	<div class="meta">
-					    		<span class="sub-heading">Beverages</span>
-					    		<br/>
-					    		<button class="ui small basic button"><i class="shop icon"></i>Shop Now</button>
-					    	</div>
-				    	</div>
+				  <div class="red card">
+				    <img height="150" width="100%" src="./images/beverages.png"/>
+				    <div class="content" style="text-align:center">
+					    <a class="header" style="color:red"><b>Beverages</b></a>
+					    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 				    </div>
 				  </div>
 				</div>
