@@ -7,6 +7,13 @@ $( document ).ready(function() {
 //ctrl
 home.controller=function(){
 	var ctrl={};
+	ctrl.gallery = function(element){
+		$(element).bxSlider({
+		    mode:'fade',
+		    pager:true,
+		    auto:true
+		});
+	}
 	return ctrl
 }
 
@@ -14,15 +21,16 @@ home.load=function(ctrl){
 	return (
 		<div class="ui grid">
 			<div class="ui segments">
-				<div class="computer only row">
-					<div class="ui horizontal segments" style="margin-bottom: 0%;">
+				<div class="ui segment">
+				<div class="ui grid computer only">
+					<div class="ui horizontal segments" style="border:transparent !important;margin-bottom: 0%;width:100%;">
 						  <div class="ui center aligned segment" style="border:transparent;padding-bottom: 0%;padding-left: 0%;padding-right: 0%;">
 						  	<h1 class ="ui header" style="display:inline-block;"><span style="color:orange;">Food</span><span>World</span></h1>
 						  </div>
 						  <div class="ui segment" style="border:transparent;">
 						  	<h2 class="ui header" style="display:inline-block;margin-top:-0.9%"><i style="display:inline-block;margin-top:-3%" class="mobile icon"></i><span style="color:orange;font-weight:400;">+91 9876543210</span></h2>
 						  </div>
-						  <div class="ui horizontal segments" style="border:transparent;padding-top:0.5%;">
+						  <div class="ui horizontal segments" style="border:transparent !important;padding-top:0.8%;">
 						  	<div class="ui segment" style="border:transparent;">
 						  		<h4 class="ui header"><i class="flag icon" style="color:orange;display:inline-block;"></i><span style="display:inline-block;">Nainitaal</span></h4>
 						  	</div>
@@ -31,13 +39,14 @@ home.load=function(ctrl){
 						  	</div>
 						  </div>
 						  <div class="ui segment" style="border:transparent;">
-						  	<div class="ui input focus">
+						  	<div class="ui input focus" style="width:100%;">
 								<input type="text" placeholder="Search..."/>
 							</div>
 						  </div>
 						</div>
 				</div>
-				<div class="ui segment" style="padding:0 0 0 0;">
+				</div>
+				<div class="ui segment" style="padding:0 0 0 0;margin-top:-1%;">
 					<div class="ui grid">
 						<div class="computer only row">
 							<div class="ui teal seven item inverted borderless menu">
@@ -107,6 +116,13 @@ home.load=function(ctrl){
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="ui segment">
+					<ul class="bxslider" config={ctrl.gallery}>
+					  <li><img class="mySlides" title="fruits" height="400" width="400" src="./images/fruits.jpg" /></li>
+					  <li><img class="mySlides" title="fruits" height="400" width="400" src="./images/vegetables.jpg" /></li>
+					  <li><img class="mySlides" title="fruits" height="400" width="400" src="./images/grocery.jpeg" /></li>
+					</ul>
 				</div>
 				<div class="ui segment">
 					<div class="ui centered grid">
@@ -203,6 +219,60 @@ home.load=function(ctrl){
 								Products
 							</div>
 							<div class="ui centered three stackable cards">
+							  	<div class="red card">
+							  		<div class="center aligned">
+							    		<img height="150" width="150" src="./images/fruits.jpg"/>
+							    	</div>
+							    <div class="content" style="text-align:center">
+								    <a class="header" style="color:red"><b>Fruits</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+								</div>
+							  </div>
+							  <div class="red card">
+							  	<div class="center aligned">
+							    	<img height="150" width="150"  src="./images/vegetables.jpg"/>
+							    </div>
+							    <div class="content" style="text-align:center">
+								    <a class="header" style="color:red"><b>Vegetables</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							    </div>
+							  </div>
+							  <div class="red card">
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/grocery.jpeg"/>
+							    </div>
+							    <div class="content" style="text-align:center">
+								    <a class="header" style="color:red"><b>Grocery</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							    </div>
+							  </div>
+							  <div class="red card">
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/personalcare3.jpg"/>
+							    </div>
+							    <div class="content" style="text-align:center">
+								    <a class="header" style="color:red"><b>Personal Care</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							    </div>
+							  </div>
+							  <div class="red card">
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/dairyproducts.jpg"/>
+							    </div>
+							    <div class="content"style="text-align:center">
+								    <a class="header" style="color:red"><b>Dairy Products</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							    </div>
+							  </div>
+							  <div class="red card">
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/beverages.png"/>
+							    </div>
+							    <div class="content" style="text-align:center">
+								    <a class="header" style="color:red"><b>Beverages</b></a>
+								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							    </div>
+							  </div>
 							  <div class="red card">
 							  	<div class="center aligned">
 							    	<img height="150" width="150" src="./images/fruits.jpg"/>
@@ -213,58 +283,18 @@ home.load=function(ctrl){
 								</div>
 							  </div>
 							  <div class="red card">
-							    <img height="150"  src="./images/vegetables.jpg"/>
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/vegetables.jpg"/>
+							    </div>
 							    <div class="content" style="text-align:center">
 								    <a class="header" style="color:red"><b>Vegetables</b></a>
 								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
 							    </div>
 							  </div>
 							  <div class="red card">
-							    <img height="150"  src="./images/grocery.jpeg"/>
-							    <div class="content" style="text-align:center">
-								    <a class="header" style="color:red"><b>Grocery</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
+							  	<div class="center aligned">
+							    	<img height="150" width="150" src="./images/grocery.jpeg"/>
 							    </div>
-							  </div>
-							  <div class="red card">
-							    <img height="150"  src="./images/personalcare3.jpg"/>
-							    <div class="content" style="text-align:center">
-								    <a class="header" style="color:red"><b>Personal Care</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
-							    </div>
-							  </div>
-							  <div class="red card">
-							    <img height="150"  src="./images/dairyproducts.jpg"/>
-							    <div class="content"style="text-align:center">
-								    <a class="header" style="color:red"><b>Dairy Products</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
-							    </div>
-							  </div>
-							  <div class="red card">
-							    <img height="150"  src="./images/beverages.png"/>
-							    <div class="content" style="text-align:center">
-								    <a class="header" style="color:red"><b>Beverages</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
-							    </div>
-							  </div>
-							</div>
-							<div class="ui centered three stackable cards">
-							  <div class="red card">
-							    <img class="aligned center" height="150"  src="./images/fruits.jpg"/>
-							    <div class="content" style="text-align:center">
-								    <a class="header" style="color:red"><b>Fruits</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
-								</div>
-							  </div>
-							  <div class="red card">
-							    <img height="150"  src="./images/vegetables.jpg"/>
-							    <div class="content" style="text-align:center">
-								    <a class="header" style="color:red"><b>Vegetables</b></a>
-								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>
-							    </div>
-							  </div>
-							  <div class="red card">
-							    <img height="150"  src="./images/grocery.jpeg"/>
 							    <div class="content" style="text-align:center">
 								    <a class="header" style="color:red"><b>Grocery</b></a>
 								    <button class="tiny ui basic button"><i class="shop icon"></i>Shop Now</button>

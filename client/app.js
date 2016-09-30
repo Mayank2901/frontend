@@ -9,6 +9,7 @@ require('state');
 require('tabs');
 require('mithril-global-request-headers')(m);
 require('dropdown');
+require('bxslider');
 //m.addGlobalHeader('Content-Type', 'application/json');
 m.cookie = require('cookie-monster');
 m.route.mode = "pathname";

@@ -67,7 +67,8 @@ module.exports = {
 			'dimmer': __dirname + '/semantic_js/dimmer.js',
 			'accordion': __dirname + '/semantic_js/accordion.js',
 			'dropdown': __dirname + '/semantic_js/dropdown',
-			'websocket': __dirname + '/semantic_js/websocket'
+			'websocket': __dirname + '/semantic_js/websocket',
+			'bxslider': __dirname + '/semantic_js/bxslider'
 				//'d3':__dirname+'/semantic_js/d3.js'
 				// // Bind version of jquery
 				// jquery: "jquery-2.0.3",
