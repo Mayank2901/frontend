@@ -76,6 +76,7 @@
   },
   "dependencies": {
     "semantic-ui-card": "^2.2.3",
-    "semantic-ui-dimmer": "^2.2.3"
+    "semantic-ui-dimmer": "^2.2.3",
+    "underscore": "^1.8.3"
   }
 }

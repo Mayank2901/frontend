@@ -1,15 +1,57 @@
 var dashboard={};
+var auth = require('module/auth');
+var _ = require('underscore');
 
 dashboard.controller = function(){
 	var ctrl = {};
 	ctrl.f = 1;
+	ctrl.bl = 1;
 	ctrl.category = m.prop('');
 	ctrl.name = m.prop('');
 	ctrl.price = m.prop('');
 	ctrl.brand = m.prop('');
-	ctrl.description = m.prop('');
+	ctrl.number = m.prop('');
+	ctrl.srch_num = m.prop('')
 	ctrl.quantity = m.prop('');
 	ctrl.instock = m.prop(false);
+	ctrl.blocked_num = m.prop([])
+	ctrl.err = m.prop('');
+	ctrl.loader = m.prop(true);
+
+	auth.PingServer_callback(function(response){
+		console.log('here::')
+		ctrl.getblocklist = function(){
+			var transport = m.prop();
+	        m
+	        .request({
+	            method:"GET",
+	            url:m.urls('admin/blocklist'),
+	            config: transport,
+	            background:true
+	        })
+	        .then(function(data){});
+	        transport().onreadystatechange = function() {
+	            var res=JSON.parse(transport().responseText);
+	            console.log('res:',res);
+	            if (transport().readyState == XMLHttpRequest.DONE) {
+	                if(transport().status == 200){
+	                	ctrl.loader = m.prop(false);
+	                    ctrl.blocked_num = m.prop(res.data.block_list)
+	                    console.log('ctrl.blocked_num:',ctrl.blocked_num())
+	                    m.redraw(true);
+	                }
+	                else{
+	                	ctrl.loader = m.prop(false);
+	                   	ctrl.err = m.prop(res.userMessage);
+	                   	$('.modal').empty();
+						$( ".modal" ).append('<div class="ui segment">'+res.userMessage+'</div>' );
+						$('.modal').modal('show');
+	                   	m.redraw(true);
+	                }
+	            }
+	        }
+	    }()
+	});
 
 	window.onload = function(){
 		console.log('here')
@@ -125,10 +167,6 @@ dashboard.controller = function(){
 		    if (transport().readyState == XMLHttpRequest.DONE) {
 		    	var res=JSON.parse(transport().responseText);
 		    	if(transport().status == 200 ){
-			        $('#product_btn').removeClass('loading');
-			        $('.modal').empty();
-				    $( ".modal" ).append( "<p>"+res.userMessage+"</p>" );
-				    $('.modal').modal('show');
 				    ctrl.category = m.prop('');
 					ctrl.name = m.prop('');
 					ctrl.price = m.prop('');
@@ -141,11 +179,130 @@ dashboard.controller = function(){
 					// console.log('status not 200');
 					$('#product_btn').removeClass('loading');
 				    $('.modal').empty();
-				    $( ".modal" ).append( "<p>"+res.userMessage+"</p>" );
+				    $( ".modal" ).append('<div class="ui segment">'+res.userMessage+'</div>' );
 				    $('.modal').modal('show');
                     transport().abort();
                     m.redraw(true);
-                    m.endComputation();
+				    return
+				}
+			}
+		}
+	}
+
+	ctrl.add_blck_list = function(){
+		if(ctrl.bl == 1){
+			$('#blck_form').form.settings.rules.number_check=function(){
+				console.log('ctrl.number:',ctrl.number());
+				var index = _.indexOf(ctrl.blocked_num(),{number: ctrl.number()});
+				console.log('index:',index)
+				if(index >= 0){
+					return false
+				}
+				else{
+					return true
+				}
+			}
+			$('#blck_form').form({
+				fields:{
+					category:{
+						identifier:'number',
+						rules: [{
+	                        type: 'empty',
+	                        prompt: 'Please enter a number.'
+	                    },
+	                    {
+	                    	type: 'number_check',
+	                    	prompt: 'Number already present in block list.'
+	                    }]
+					}
+				},
+				onSuccess: function(e,f) {
+					$('#blck_btn').addClass('loading')
+					console.log("onSuccess")
+					e.preventDefault();
+					ctrl.bl=0;
+					ctrl.data ={
+						number : ctrl.number()
+					}
+					var transport = m.prop();
+	            	m
+					.request({
+						method: "POST",
+						url: m.urls('admin/blocklist'),
+						data: ctrl.data,
+						config: transport
+					})
+					.then(function(data){
+					});
+					transport().onreadystatechange = function() {
+					    var res=JSON.parse(transport().responseText);
+					    console.log('res:',res);
+					    if (transport().readyState == XMLHttpRequest.DONE) {
+					    	if(transport().status == 200 ){
+						        $('#blck_btn').removeClass('loading');
+							    ctrl.blocked_num().push(res.data.block_list);
+							    console.log('ctrl.blocked_num:',ctrl.blocked_num())
+								m.redraw(true)
+						    }
+							else {
+								// console.log('status not 200');
+								$('#blck_btn').removeClass('loading');
+							    $('.modal').empty();
+							    $( ".modal" ).append('<div class="ui segment">'+res.userMessage+'</div>' );
+							    $('.modal').modal('show');
+			                    transport().abort();
+			                    m.redraw(true);
+							    return
+							}
+						}
+					}
+	            },
+	            onFailure: function(err,f){
+	            	console.log("onFailure");
+	            	ctrl.bl=0;
+	            	return false
+	            }
+			})
+		}
+	}
+
+	ctrl.remove_block = function(e){
+		var id = e.currentTarget.id 
+		$('#'+id).addClass('loading')
+		var transport = m.prop();
+		ctrl.data = {
+			id : id
+		}
+		console.log('data:',ctrl.data)
+		m
+		.request({
+			method: "DELETE",
+			url: m.urls('admin/blocklist'),
+			data: ctrl.data,
+			config: transport
+		})
+		.then(function(data){
+		});
+		transport().onreadystatechange = function() {
+		    var res=JSON.parse(transport().responseText);
+		    console.log('res:',res);
+		    if (transport().readyState == XMLHttpRequest.DONE) {
+		    	if(transport().status == 200 ){
+		    		$('#'+id).removeClass('loading');
+		    		var index = _.indexOf(ctrl.blocked_num(),{_id:id})
+				    ctrl.blocked_num().splice(index,1);
+				    console.log('ctrl.blocked_num:',ctrl.blocked_num())
+					m.redraw(true)
+			    }
+				else {
+					$('#'+id).removeClass('loading')
+					// console.log('status not 200');
+					$('#blck_btn').removeClass('loading');
+				    $('.modal').empty();
+				    $( ".modal" ).append('<div class="ui segment">'+res.userMessage+'</div>' );
+				    $('.modal').modal('show');
+			        transport().abort();
+			        m.redraw(true);
 				    return
 				}
 			}
@@ -196,16 +353,6 @@ dashboard.Load = function(ctrl){
 		    					<input type="text" oninput={m.withAttr('value',ctrl.brand)} name="brand"/>
 							</div>
 						</div>
-						<div class="two fields">
-							<div class="field">
-								<label>Description</label>
-		    					<input type="text" oninput={m.withAttr('value',ctrl.description)} name="description"/>
-							</div>
-							<div class="field">
-								<label>Quantity</label>
-		    					<input type="text" oninput={m.withAttr('value',ctrl.quantity)} name="quantity"/>
-							</div>
-						</div>
 						<div class="three fields">
 							<div class="field">
 								<select class="ui search dropdown" id="catgry_dd">
@@ -248,12 +395,15 @@ dashboard.Load = function(ctrl){
 								</div>
 							</div>
 							<div class="field">
-								<label>Image</label>
-	    						<button class="ui right labeled icon button">
-								  <i class="arrow up icon"></i>
-								  Upload
-								</button>
+		    					<input type="text" oninput={m.withAttr('value',ctrl.quantity)} name="quantity" placeholder="Quantity"/>
 							</div>
+						</div>
+						<div class="field">
+							<label>Image</label>
+	    					<button class="ui right labeled icon button">
+							  <i class="arrow up icon"></i>
+							  Upload
+							</button>
 						</div>
 						<button type="submit" class="ui primary button" id="product_btn" onclick={ctrl.val_submit_prdct}>
 						  Save
@@ -263,16 +413,17 @@ dashboard.Load = function(ctrl){
 			</div>
 			<div class="ui attached tab segment" data-tab="numbers" style="position: absolute;top: 0;left: 16%;bottom: 0;width:84%;overflow:auto;overflow-y:scroll;">
 				<div class="ui inverted segment">
-					<form class="ui inverted form">
+					<form class="ui inverted form" id="blck_form">
 						<div class="field">
 							<label>Number</label>
 				    		<input type="text" oninput={m.withAttr('value',ctrl.number)} name="number"/>
 				    	</div>
 				    	<div class="field">
-				    		<button type="submit" class="ui primary button" onclick={ctrl.val_submit_prdct}>
+				    		<button type="submit" id="blck_btn" class="ui primary button" onclick={ctrl.add_blck_list}>
 							  Add to block list
 							</button>
 				    	</div>
+				    	<div class="ui error message"></div>
 					</form>
 				</div>
 				<div class="ui segment" style="background-color:transparent;">
@@ -285,7 +436,7 @@ dashboard.Load = function(ctrl){
 					    	<th colspan="1">
 					      		<div class="ui fluid category search">
 								  <div class="ui icon input">
-								    <input class="prompt" type="text" placeholder="Search Number.."/>
+								    <input class="prompt" type="text" oninput={m.withAttr('value',ctrl.srch_num)}placeholder="Search Number.."/>
 								    <i class="search icon"></i>
 								  </div>
 								  <div class="results"></div>
@@ -294,25 +445,24 @@ dashboard.Load = function(ctrl){
 					  	</tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <td class="collapsing">
-					        1234567890
-					      </td>
-					      <td>23-12-2016</td>
-					      <td class="center aligned collapsing">
-					      	<button class="positive ui right labeled icon button">
-					      		<i class="checkmark icon"></i>
-					      		Remove
-					      	</button>
-					      </td>
-					    </tr>
-					    <tr>
-					      <td class="collapsing">
-					        1234567890
-					      </td>
-					      <td>23-12-2016</td>
-					      <td class="center aligned collapsing"><button class="positive ui button">Remove</button></td>
-					    </tr>
+					  {
+					  	ctrl.blocked_num().map(function(number){
+					  		return(
+					  			<tr>
+							      <td class="collapsing">
+							        {number.number}
+							      </td>
+							      <td>{number.date.substring(0,number.date.indexOf('T'))}</td>
+							      <td class="center aligned collapsing">
+							      	<button class="positive ui right labeled icon button" onclick={ctrl.remove_block} id={number._id}>
+							      		<i class="checkmark icon"></i>
+							      		Remove
+							      	</button>
+							      </td>
+							    </tr>
+					  		)
+					  	})
+					  }
 					  </tbody>
 					</table>
 				</div>
@@ -328,7 +478,7 @@ dashboard.Load = function(ctrl){
 
 dashboard.view = function(ctrl){
 	return(
-		this.Load(ctrl)
+		ctrl.loader() ? require('module/loader') : this.Load(ctrl)
 	)
 }
 

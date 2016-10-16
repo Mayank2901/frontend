@@ -67,6 +67,59 @@ Auth.PingServer = function(cookie, cb) {
 	}
 }
 
+Auth.PingServer_callback = function(cb){
+    var cookie = m.cookie.get("foodshop");
+    console.log('userdata::',this.UserData())
+    cb(true);
+    // if(cookie == null){
+    //     Auth.clearSession();
+    //     page.redirect('/home')
+    // }
+    // else if(!this.UserData() && cookie != null){
+    //     var transport = m.prop();
+    //     m
+    //     .request({
+    //         method:"GET",
+    //         url:m.urls('ping'),
+    //         config: transport,
+    //         background:true
+    //     })
+    //     .then(function(data){});
+    //     transport().onreadystatechange = function() {
+    //         // console.log('responsetext:',transport().responseText)
+    //         // var res=JSON.parse(transport().responseText);
+    //         if (transport().readyState == XMLHttpRequest.DONE) {
+    //             if(transport().status == 401 || transport().status == 403){
+    //                 console.log('session does not exists')
+    //                 Auth.clearSession();
+    //                 page.redirect('/')
+    //             }
+    //             else{
+    //                 var res=JSON.parse(transport().responseText);
+    //                 console.log('res:',res);
+    //                 Auth.UserData=m.prop(res);
+    //                 // console.log('auth.userdata:',Auth.UserData())
+    //                 m.user = m.prop(Auth.UserData().data.user);
+    //                 //console.log('m.user::',m.user);
+    //                 m.csrf=Auth.UserData().csrf;
+    //                 //Auth.updateCsrf(m.csrf);
+    //                 //console.log(Auth.UserData,m.csrf)
+    //                 //if(Auth.UserData().logged_in)
+    //                 Auth.session_exists = m.prop(true);
+    //                 cb(true)
+    //             }
+    //         }
+    //     }
+    // }
+    // else{
+    //     console.log('here');
+    //     cb(true);
+    // }
+    
+    // else
+    //  return true;
+}
+
 Auth.session_exists = m.prop(false);
 
 //just check cookie and set authorization
