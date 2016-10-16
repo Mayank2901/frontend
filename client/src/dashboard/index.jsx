@@ -262,7 +262,60 @@ dashboard.Load = function(ctrl){
 					</form>
 			</div>
 			<div class="ui attached tab segment" data-tab="numbers" style="position: absolute;top: 0;left: 16%;bottom: 0;width:84%;overflow:auto;overflow-y:scroll;">
-				all_products
+				<div class="ui inverted segment">
+					<form class="ui inverted form">
+						<div class="field">
+							<label>Number</label>
+				    		<input type="text" oninput={m.withAttr('value',ctrl.number)} name="number"/>
+				    	</div>
+				    	<div class="field">
+				    		<button type="submit" class="ui primary button" onclick={ctrl.val_submit_prdct}>
+							  Add to block list
+							</button>
+				    	</div>
+					</form>
+				</div>
+				<div class="ui segment" style="background-color:transparent;">
+					<table class="ui celled striped table">
+					  <thead>
+					    <tr>
+					    	<th colspan="2">
+					      		Blocked Numbers
+					    	</th>
+					    	<th colspan="1">
+					      		<div class="ui fluid category search">
+								  <div class="ui icon input">
+								    <input class="prompt" type="text" placeholder="Search Number.."/>
+								    <i class="search icon"></i>
+								  </div>
+								  <div class="results"></div>
+								</div>
+					    	</th>
+					  	</tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td class="collapsing">
+					        1234567890
+					      </td>
+					      <td>23-12-2016</td>
+					      <td class="center aligned collapsing">
+					      	<button class="positive ui right labeled icon button">
+					      		<i class="checkmark icon"></i>
+					      		Remove
+					      	</button>
+					      </td>
+					    </tr>
+					    <tr>
+					      <td class="collapsing">
+					        1234567890
+					      </td>
+					      <td>23-12-2016</td>
+					      <td class="center aligned collapsing"><button class="positive ui button">Remove</button></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
 			</div>
 			<div class="ui attached tab segment" data-tab="all_products" style="position: absolute;top: 0;left: 16%;bottom: 0;width:84%;overflow:auto;overflow-y:scroll;">
 				all_product
