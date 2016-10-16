@@ -68,7 +68,8 @@ module.exports = {
 			'accordion': __dirname + '/semantic_js/accordion.js',
 			'dropdown': __dirname + '/semantic_js/dropdown',
 			'websocket': __dirname + '/semantic_js/websocket',
-			'bxslider': __dirname + '/semantic_js/bxslider'
+			'bxslider': __dirname + '/semantic_js/bxslider',
+			'checkbox': __dirname + '/semantic/src/definitions/modules/checkbox'
 				//'d3':__dirname+'/semantic_js/d3.js'
 				// // Bind version of jquery
 				// jquery: "jquery-2.0.3",
